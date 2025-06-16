@@ -92,6 +92,21 @@ To extend the agent with new capabilities:
 - OpenAI API
 - Google Generative AI (optional)
 
+## LLM Observability
+
+This project implements comprehensive LLM observability to monitor, track, and improve the performance of the AI agent system. Observability helps in debugging, understanding agent behavior, and improving overall system quality.
+
+![LLM Observability Dashboard](image1.png)
+
+### Key Observability Features
+
+- **Tracing**: Full tracing of all LLM interactions, allowing for detailed analysis of agent reasoning and decision-making processes
+- **Performance Metrics**: Track latency, token usage, and cost across different model versions and configurations
+- **Quality Monitoring**: Evaluate response quality and accuracy using automated metrics and human feedback
+- **Error Detection**: Identify and categorize errors in agent responses for continuous improvement
+- **Experiment Tracking**: Compare different prompt templates, model parameters, and agent configurations
+
+
 ## Evaluation Methods
 
 The project could use following evaluation methods:
@@ -110,6 +125,7 @@ The project could use following evaluation methods:
   - Primary implementation uses OpenAI LLMs with an architecture that makes it easy to switch to alternative providers
   - Successfully tested with Google's Gemini models
 - **Agent Architecture**: Implements a single agent mechanism for streamlined interaction and decision-making
+- **Prompt Decorator**: Use prompt decorator to optimise LLM performance.
 - **Development Tools**:
   - LangSmith Agent Editor for refining agent behaviors and prompt engineering
   - LangGraph Studio for visualizing and debugging the agent workflow
