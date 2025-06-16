@@ -1,3 +1,4 @@
+<workflow_context_sample>
 ### **Workflow Context Sample**
 
 This file contains the specific workflow variable values used in a test scenario.

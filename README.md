@@ -92,6 +92,65 @@ To extend the agent with new capabilities:
 - OpenAI API
 - Google Generative AI (optional)
 
+## Evaluation Methods
+
+The project could use following evaluation methods:
+- Human Evaluation
+- Golden Dataset Experiments
+- LLM-as-Judge
+
+## Current Features
+
+### Implementation Highlights
+
+- **LLM Observability**: Integrated with LangSmith and Langfuse for comprehensive monitoring, tracing, and debugging of LLM interactions
+- **Memory Layer**: Utilizes LangGraph Studio's memory capabilities to maintain context across conversation turns
+- **Debugging Capabilities**: LangGraph Studio provides powerful debugging tools to trace agent decision-making and workflow execution
+- **Model Flexibility**:
+  - Primary implementation uses OpenAI LLMs with an architecture that makes it easy to switch to alternative providers
+  - Successfully tested with Google's Gemini models
+- **Agent Architecture**: Implements a single agent mechanism for streamlined interaction and decision-making
+- **Development Tools**:
+  - LangSmith Agent Editor for refining agent behaviors and prompt engineering
+  - LangGraph Studio for visualizing and debugging the agent workflow
+
+### Technical Stack
+
+- **Framework**: Built on LangGraph and LangChain for robust agent orchestration
+- **Observability**: LangSmith and Langfuse integration for tracing and monitoring
+- **Models**: Compatible with OpenAI GPT models and Google Gemini
+- **Development Environment**: LangGraph Studio and LangSmith Agent Editor
+
+## Future Improvements
+
+This project has several potential areas for future enhancement:
+
+### Agent Perspectives
+- **Specialized Agent Roles**: Develop agents with domain-specific knowledge (e.g., data engineering, security, compliance)
+- **Personalized Agent Memory**: Implement persistent memory for better context retention across user interactions
+- **Adaptive Learning**: Create agents that learn from past interactions to improve recommendations
+- **Explanation Capabilities**: Enhance the agent's ability to explain its reasoning and decision-making process
+
+### MCP (Model Context Protocol) Tools
+- **Enhanced Tool Integration**: Expand the range of MCP-compatible tools available to the agent
+- **Custom Tool Development**: Create domain-specific tools to handle specialized tasks
+- **Tool Selection Optimization**: Improve the agent's ability to select the most appropriate tool for each task
+- **Tool Chaining**: Develop more sophisticated patterns for combining multiple tools in sequence
+
+### Multi-Agent Systems
+- **Collaborative Agent Teams**: Implement specialized agents that work together on complex workflows
+
+### Technical Improvements
+- **Workflow Optimization**: Analyze and suggest improvements to existing workflows
+- **Performance Benchmarking**: Develop metrics to evaluate and improve agent response time and accuracy
+- **Expanded LLM Support**: Add compatibility with additional LLM providers beyond OpenAI and Gemini
+- **Reduced Hallucination**: Implement techniques to minimize incorrect or fabricated information
+
+### User Experience
+- **Interactive Configuration Preview**: Provide visual previews of workflow configurations
+- **Natural Language Debugging**: Allow users to troubleshoot issues through conversation
+- **Multi-modal Interaction**: Support image and document uploads as part of the workflow configuration process
+
 ## License
 
 [Add license information here]

@@ -45,15 +45,11 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 #     )
 
 
-
 def load_prompt(prompt_name: str) -> str:
     # Fall back to local file
     print(f"Using local prompt '{prompt_name}'")
     with open(os.path.join(os.path.dirname(__file__), f'prompts/{prompt_name}.txt'), 'r') as file:
         return file.read()
-
-
-
 
 
 
@@ -70,7 +66,6 @@ async def make_graph():
     prompt_integration_actions = load_prompt("integration_actions")
     prompt_workflow_context = load_prompt("workflow_context")
 
-
     class InputCheck(TypedDict):
         """Simple schema to get a definitive TRUE/FALSE response"""
         needs_more_input: bool
@@ -78,7 +73,6 @@ async def make_graph():
 
 
     async def chatbot(state: State, config: Optional[RunnableConfig] = None):
-
 
         messages = [
             {"role": "system", "content": prompt_decorator},

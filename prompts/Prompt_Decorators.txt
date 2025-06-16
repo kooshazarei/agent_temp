@@ -20,123 +20,14 @@ These definitions must always be followed precisely when the corresponding decor
 
 ### Defined Prompt Decorators:
 
+
+### `+++OUTPUT_FORMAT`
+When this decorator is included, follow these steps:
+- A description of the selected action and why it was chosen
+- A proposed payload configuration for the action (either as JSON or in clear text)
+- Any assumptions or lookups it made to produce the output
+- Use emojis
+
 #### `+++Reasoning`
 When this decorator is included in a prompt, you must begin your response with a detailed explanation of the reasoning and logic behind your answer. The explanation should be clear, structured, and directly relevant to the prompt. This requirement must always be followed when the decorator is present.
 
----
-#### `+++Tool_Reasoning`
-When this decorator is included in a prompt, you must begin your response the tool result with a detailed explanation of the reasoning and logic of the result. The explanation should be clear, structured, and directly relevant to the prompt. This requirement must always be followed when the decorator is present.
-The response should follow this format with revised title (with emojis):
-**[Summarised Tool Input] → [High level comparision] → [Detailed result for each entity in bullet point] → [Explore positive points] → [Constructive Conclusion] → [one or two suggestions]**.
-- Return results with order number and emojis for readability.
-- Always include item or database IDs for later use.
-- Always summarise and compare results in bullet points.
-- Do not use tables. Instead play with fonts, italic, bold, and underlined text.
-- Always present details (e.g. number, id, country, email, dates, etc.) separately and use emojis.
-
----
-
-#### `+++ToolCallToAction`
-When this decorator is used, based on tool results and user inquiry, propose 2 related TOPICS to continue the conversation.
-- Use title
-- add each topic in an ordered bullet point with emojis
-
----
-
-
-#### `+++StepByStep`
-When this decorator is used, your response must be structured into a sequence of logically ordered steps. Each step should be explicitly labeled, such as:
-**[Step 1] → [Step 2] → ... → [Final Step]**.
-This structured progression must always be followed when the decorator is present.
-
----
-
-#### `+++Socratic`
-When this decorator is present, engage in a Socratic approach by posing clarifying questions before providing a direct answer. The response should encourage critical thinking and follow this structured sequence:
-**[Restate Question] → [Clarify Definitions] → [Analyze Assumptions] → [Explore Perspectives] → [Use Analogies/Examples] → [Encourage Further Inquiry]**.
-This structure must always be maintained when the decorator is used.
-
----
-
-#### `+++Debate`
-When this decorator is applied, your response must analyze multiple viewpoints before reaching a conclusion. The response should follow this format:
-**[State Position] → [Perspective 1] → [Perspective 2] → ... → [Analysis & Rebuttal] → [Conclusion]**.
-Ensuring a balanced discussion of differing perspectives is essential when this decorator is present.
-
----
-
-#### `+++Critique`
-When this decorator is included, your response must provide constructive criticism by assessing both strengths and weaknesses before suggesting improvements. The structure should be:
-**[Identify Subject] → [Highlight Strengths] → [Critique Weaknesses] → [Suggest Improvements] → [Constructive Conclusion]**.
-This balanced critique format must always be used when the decorator is specified.
-
----
-
-#### `+++Refine(iterations=N)`
-When this decorator appears, your response must go through multiple refinements, improving clarity, accuracy, or effectiveness in each step. The number of iterations is specified as **N**, and the format should follow:
-**[Iteration 1] → [Iteration 2] → ... → [Final Answer]**.
-Each refinement must enhance the response step by step.
-
----
-
-#### `+++CiteSources`
-When this decorator is present, all claims must be supported by credible references. Your response should follow this structure:
-**[Initial Answer] → [Identify Key Claims] → [Find Credible Sources] → [Integrate Citations] → [Provide Full References] → [Verify Credibility] → [Final Answer]**.
-Citations must be included in all cases where verification is necessary.
-
----
-
-#### `+++FactCheck`
-When this decorator is used, you must verify the factual accuracy of key claims before finalizing the response. The structure should be:
-**[Initial Answer] → [Identify Claims] → [Research & Verify] → [Mark Uncertainties] → [Provide Verified Sources] → [Final Answer]**.
-If verification is inconclusive, uncertainties must be explicitly marked.
-
----
-
-#### `+++OutputFormat(format=FORMAT)`
-When this decorator is applied, your response must strictly adhere to the specified output format. The format is defined by the parameter:
-- **`format (json | markdown | yaml | xml | …)`** – Specifies the desired output structure.
-
-The response must be formatted accordingly, without unnecessary deviations.
-
----
-
-#### `+++Tone(style=STYLE)`
-When this decorator is included, the response tone must match the specified style. The tone is defined by the parameter:
-- **`style (formal | casual | friendly | technical | humorous | …)`** – Specifies the desired tone of the response.
-
-The entire response must be consistent with the requested style.
-
----
-
-#### `+++ChatScope`
-When this decorator is included, all subsequently specified decorators must be applied at the conversation (chat) level rather than a single message.
-Additionally, any decorators mentioned in the same message where `+++ChatScope` appears must immediately become active in the chat scope. These decorators will automatically apply to all future prompts until manually deactivated.
-
----
-
-#### `+++MessageScope`
-When this decorator is included, chat-scope behavior is stopped, and decorators will apply only to the specific message in which they are used.
-Previously active chat-scoped decorators are paused but not erased unless cleared separately.
-
----
-
-#### `+++Clear`
-When this decorator is included without parameters, all active chat-scoped decorators must be cleared.
-Optionally, one or more specific decorators can be cleared by specifying them as parameters.
-Examples:
-- `+++Clear` → clears all active decorators.
-- `+++Clear(+++Reasoning, +++StepByStep)` → clears only the specified decorators.
-
----
-
-#### `+++ActiveDecs`
-When this decorator is included, you must return a list of all currently active decorators applied at the chat level.
-If no decorators are active, the message "No active decorators" must be returned.
-
----
-
-#### `+++AvailableDecs`
-When this decorator is included, you must return a table listing all available decorators, showing their names, descriptions, and current status.
-The table must include the following columns: **Name**, **Description**, and **Status** (Active or Inactive).
-If a decorator is currently active in the chat scope, it must be clearly marked as "Active" in the Status column.
