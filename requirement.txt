@@ -1,0 +1,9 @@
+langgraph
+langchain-core
+langchain_mcp_adapters
+langsmith
+langfuse
+langchain
+langchain_openai
+langchain_google_genai
+langgraph-cli[inmem]
